@@ -24,6 +24,9 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderable.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Updatable.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
