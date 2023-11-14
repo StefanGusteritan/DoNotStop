@@ -5,17 +5,17 @@ void Renderable::render(sf::RenderWindow* window)
 {
 }
 
-void Renderable::setActiveState(bool active)
+void Renderable::setRenderActiveState(bool active)
 {
 	//Sets the active state of the updatable
 
-	this->activeState = active;
+	this->renderActiveState = active;
 }
 
-bool Renderable::isActive()
+bool Renderable::isRenderActive()
 {
 	// Returns the active state of the updatable
 
-	return this->activeState;
+	return this->renderActiveState;
 }
 

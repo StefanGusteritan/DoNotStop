@@ -7,15 +7,11 @@ Game::Game
 	//Window
 	sf::VideoMode videoMode, std::string title, sf::Uint32 style,
 	
-	//Pixels Per Unit
-	float pxPerUnit,
-	
 	//Scene
 	Scene activeScene, std::list<Scene> scenes
 )
 {
 	this->windowInit(videoMode, title, style);
-	this->pixelsPerUnitInit(pxPerUnit);
 	this->scenes = scenes;
 	this->activeScene = new Scene(activeScene);
 }
@@ -27,10 +23,6 @@ void Game::windowInit(sf::VideoMode videoMode, std::string title, sf::Uint32 sty
 	this->window.create(videoMode, title, style);
 }
 
-void Game::pixelsPerUnitInit(float pxPerUnit)
-{
-	this->u = pxPerUnit;
-}
 
 
 //Functions
@@ -68,7 +60,7 @@ void Game::updateSFMLEvents()
 
 		for (auto updatable : this->activeScene->updatables)
 		{
-			if (updatable->isActive())
+			if (updatable->isUpdateActive())
 				updatable->updateSFMLEvents();
 		}
 
@@ -84,8 +76,8 @@ void Game::update()
 
 	for (auto updatable : this->activeScene->updatables)
 	{
-		if (updatable->isActive())
-			updatable->update();
+		if (updatable->isUpdateActive())
+			updatable->update(this->dt);
 	}
 }
 
@@ -95,7 +87,7 @@ void Game::render()
 
 	for (auto renderable : this->activeScene->renderables)
 	{
-		if (renderable->isActive())
+		if (renderable->isRenderActive())
 		{
 			renderable->render(&this->window);
 		}

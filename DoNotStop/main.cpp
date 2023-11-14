@@ -1,16 +1,17 @@
 #include "Game.h"
 
-class Test : public Renderable
+class Test : public Renderable, public Updatable
 {
 private:
 	sf::CircleShape circle;
-
+	float speed = 50;
 
 public:
 	Test()
 	{
-		this->setActiveState(true);
-		circle.setRadius(2);
+		this->setRenderActiveState(true);
+		this->setUpdateActiveState(true);
+		circle.setRadius(20);
 		circle.setFillColor(sf::Color::Blue);
 		circle.setPosition(0, 0);
 	}
@@ -20,6 +21,13 @@ public:
 		window->draw(circle);
 		
 	}
+
+	void update(float& dt) override
+	{
+		if (this->circle.getPosition().x < 200)
+			this->circle.move(speed * dt, 0);
+	}
+
 };
 
 
@@ -30,6 +38,7 @@ int main()
 
 	Test a;
 	scene.renderables.push_back(&a);
+	scene.updatables.push_back(&a);
 
 	scenes.push_back(scene);
 
@@ -40,8 +49,6 @@ int main()
 		"My Game",
 		sf::Style::Default,
 
-		//Pixels Per Unit
-		100,
 
 		//Scene
 		scene,

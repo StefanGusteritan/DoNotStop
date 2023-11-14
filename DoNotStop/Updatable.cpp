@@ -5,20 +5,20 @@ void Updatable::updateSFMLEvents()
 {
 }
 
-void Updatable::update()
+void Updatable::update(float& dt)
 {
 }
 
-void Updatable::setActiveState(bool active)
+void Updatable::setUpdateActiveState(bool active)
 {
 	//Sets the active state of the updatable
 	
-	this->activeState = active;
+	this->updateActiveState = active;
 }
 
-bool Updatable::isActive()
+bool Updatable::isUpdateActive()
 {
 	// Returns the active state of the updatable
 
-	return this->activeState;
+	return this->updateActiveState;
 }

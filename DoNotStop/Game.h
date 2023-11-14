@@ -13,15 +13,15 @@ class Updatable
 	// Has update and updateSFMLEvents functions that are called each frame
 private:
 	// The active state if (false) update is not called
-	bool activeState;
+	bool updateActiveState;
 
 public:
 
 	//Functions
 	virtual void updateSFMLEvents();
-	virtual void update();
-	void setActiveState(bool active);
-	bool isActive();
+	virtual void update(float& dt);
+	void setUpdateActiveState(bool active);
+	bool isUpdateActive();
 };
 
 
@@ -30,14 +30,14 @@ class Renderable
 	// Has render function that is called each frame
 private:
 	// The active state if (false) render is not called
-	bool activeState;
+	bool renderActiveState;
 
 public:
 
 	//Functions
 	virtual void render(sf::RenderWindow* window);
-	void setActiveState(bool active);
-	bool isActive();
+	void setRenderActiveState(bool active);
+	bool isRenderActive();
 };
 
 
@@ -79,7 +79,6 @@ private:
 
 	//Initialization Functions
 	void windowInit(sf::VideoMode videoMode, std::string tilte, sf::Uint32 style);
-	void pixelsPerUnitInit(float pxPerUnit);
 
 	//Functons
 	void updateDeltaTile();
@@ -97,19 +96,12 @@ public:
 			std::string title,
 			sf::Uint32 style,
 
-			// Pixels Per Unit
-			float pxPerUnit,
 
 			//Scene
 			Scene activeScene,
 			std::list <Scene> scenes
 		);
 
-
-	//Variables
-	 
-		// Pixel per Unit
-		float u;
 
 
 	//Functions
