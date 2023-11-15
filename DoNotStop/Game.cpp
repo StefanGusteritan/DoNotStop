@@ -8,13 +8,14 @@ Game::Game
 	sf::VideoMode videoMode, std::string title, sf::Uint32 style,
 	
 	//Scene
-	Scene activeScene, std::list<Scene> scenes
+	Scene &activeScene, std::list<Scene> scenes
 )
 {
 	this->windowInit(videoMode, title, style);
 	this->scenes = scenes;
-	this->activeScene = new Scene(activeScene);
+	this->activeScene = &activeScene;
 }
+
 
 
 //Initialization

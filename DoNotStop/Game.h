@@ -98,7 +98,7 @@ public:
 
 
 			//Scene
-			Scene activeScene,
+			Scene& activeScene,
 			std::list <Scene> scenes
 		);
 
