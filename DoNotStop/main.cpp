@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Game/Game.h"
 
 class Test : public Renderable, public Updatable
 {

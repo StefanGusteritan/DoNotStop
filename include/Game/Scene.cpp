@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Game/Game.h"
 
 Scene::Scene(std::string name)
 {
